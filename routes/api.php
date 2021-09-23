@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TopicController;
+use App\Http\Controllers\TopicSubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/me', function (Request $request) {
-    return [];
-});
+Route::get('/topic/{topic:title}', [TopicController::class, 'show']);
+Route::post('/subscribe/{topic:title}', [TopicSubscriptionController::class, 'store']);
+Route::post('/publish/{topic:title}', [TopicSubscriptionController::class, 'publish']);
