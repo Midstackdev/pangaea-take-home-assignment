@@ -1,4 +1,4 @@
-## About Laravel Saas boilerplate
+## About Laravel live notifications
 
 This is a real time notification server backend built with laravel.
 
@@ -48,8 +48,8 @@ PUSHER_APP_SECRET=local
 > laravel, php, javascript, nodejs, express
 - Random users have been subcribed to different topics during seeding.
 - Test realtime notificatioons with postman.
-> POST api/publish/{topic} topic is any if the five topics to http://laravel-pangaea.test/api/publish/{topic} with the json data below
-```json
+> POST api/publish/{topic} topic is any of the five topics to http://laravel-pangaea.test/api/publish/{topic} or http://your-app-home/api/publish/{topic} with the json data below
+```
     {
 		"data":{"msg": "hello"}
 	}
