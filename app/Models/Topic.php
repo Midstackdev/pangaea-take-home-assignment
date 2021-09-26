@@ -28,8 +28,13 @@ class Topic extends Model
         return $this->hasMany(TopicSubscription::class);
     }
 
-    public function getIsSubscribedToAttribute()
+    public function subscribers()
     {
-        return $this->subscriptions()->where('user_id', auth()->id())->exists();
+        return $this->belongsToMany(User::class, 'topic_subscriptions');
+    }
+
+    public function getIsSubscribedToAttribute($userId = null)
+    {
+        return $this->subscriptions()->where('user_id', $userId ?: auth()->id())->exists();
     }
 }

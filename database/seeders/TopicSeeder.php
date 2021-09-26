@@ -14,6 +14,11 @@ class TopicSeeder extends Seeder
      */
     public function run()
     {
-        Topic::factory(10)->create();
+    	$topics = ['laravel', 'php', 'javascript', 'nodejs', 'express' ];
+        foreach($topics as $name) {
+    		Topic::factory()->create([
+    			'title' => $name,
+    		]);
+    	}
     }
 }

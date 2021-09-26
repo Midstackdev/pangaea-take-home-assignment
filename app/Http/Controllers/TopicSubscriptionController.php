@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageWasPublished;
 use App\Models\Topic;
 use App\Models\TopicSubscription;
 use Illuminate\Http\Request;
@@ -96,6 +97,7 @@ class TopicSubscriptionController extends Controller
      */
     public function publish(Request $request, Topic $topic)
     {
+        broadcast(new MessageWasPublished($request->data, $topic));
         return response()->json([
             'topic' => $topic->title,
             'data' => $request->data,
